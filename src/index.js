@@ -2,10 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import "@zendeskgarden/css-bedrock"
+import { ThemeProvider } from 'styled-components';
+import { DEFAULT_THEME } from '@zendeskgarden/react-theming';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={DEFAULT_THEME}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
