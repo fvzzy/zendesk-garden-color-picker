@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import { Field, Hint, Label, Range } from '@zendeskgarden/react-forms';
+import { Field, Label, Range, Input } from '@zendeskgarden/react-forms';
 import { ButtonGroup, Button } from '@zendeskgarden/react-buttons';
 import { Body, Cell, Head, HeaderCell, HeaderRow, Row, Table } from '@zendeskgarden/react-tables';
 import { Paragraph, Span } from '@zendeskgarden/react-typography';
@@ -105,8 +105,8 @@ function App() {
           </HueField>
           <ShadeField>
             <Label>Background Shade</Label>
-            <Hint>{bgShade}</Hint>
-            <Range step={0.1} onChange={e => setBgShade(e.target.value * 10)} />
+            <Input type='number' value={bgShade} onChange={e => setBgShade(e.target.value)} />
+            <Range step={0.1} value={bgShade / 10} onChange={e => setBgShade(e.target.value * 10)} />
           </ShadeField>
         </ColorPickerGroup>
 
@@ -119,8 +119,8 @@ function App() {
           </HueField>
           <ShadeField>
             <Label>Foreground Shade</Label>
-            <Hint>{fgShade}</Hint>
-            <Range step={0.1} onChange={e => setFgShade(e.target.value * 10)} />
+            <Input type='number' value={fgShade} onChange={e => setFgShade(e.target.value)} />
+            <Range step={0.1} value={fgShade / 10} onChange={e => setFgShade(e.target.value * 10)} />
           </ShadeField>
         </ColorPickerGroup>
 
