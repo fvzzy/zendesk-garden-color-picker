@@ -124,7 +124,7 @@ function App() {
           </ShadeField>
         </ColorPickerGroup>
 
-        <ComputerColorsTable size='large'>
+        <ComputerColorsTable>
           <Head>
             <HeaderRow>
               <HeaderCell>Computed Colors</HeaderCell>
