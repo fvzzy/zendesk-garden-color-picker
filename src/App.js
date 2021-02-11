@@ -3,20 +3,21 @@ import styled from 'styled-components';
 import { Field, Hint, Label, Range } from '@zendeskgarden/react-forms';
 import { ButtonGroup, Button } from '@zendeskgarden/react-buttons';
 import { Body, Cell, Head, HeaderCell, HeaderRow, Row, Table } from '@zendeskgarden/react-tables';
-import { Well, Title as WellTitle, Paragraph } from '@zendeskgarden/react-notifications';
+import { Paragraph, Span } from '@zendeskgarden/react-typography';
+import { Well, Title as WellTitle, Alert } from '@zendeskgarden/react-notifications';
 import { DEFAULT_THEME, PALETTE, getColor } from '@zendeskgarden/react-theming';
 import rgb2hex from 'rgb2hex';
+import { ratio, score } from 'wcag-color';
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  padding: ${props => props.theme.space.xl};
 `
 
 const InnerContainer = styled.div`
   max-width: 700px;
-  padding: ${props => props.theme.space.lg};
+  padding: ${props => props.theme.space.xl};
   border: ${props => `${props.theme.borders.sm} ${PALETTE.grey[200]}`};
 `
 
@@ -33,7 +34,7 @@ const ShadeField = styled(Field)`
 `
 
 const StyledButtonGroup = styled(ButtonGroup)`
-  width: 100%;
+  min-width: 100%;
 `
 
 const BlockLabel = styled(Label)`
@@ -46,6 +47,7 @@ const ComputerColorsTable = styled(Table)`
 `
 
 const ExampleWell = styled(Well)`
+  margin-bottom: ${props => props.theme.space.lg};
   color: ${props => props.foreground};
   background-color: ${props => props.background};
 `
@@ -68,6 +70,29 @@ function App() {
   const fgRgba = colorRgba(fgHue, fgShade);
   const fgHex = rgb2hex(fgRgba).hex;
 
+  const contrastRatio = ratio(fgHex, bgHex);
+  const contrastScore = score(fgHex, bgHex);
+  const getContrastDescription = score => {
+    if (score === 'AAA') {
+      return 'This is enhanced contrast, suitable for longer articles that will be read for a significant period of time.';
+    } else if (score === 'AA') {
+      return 'This is the sweet spot for text sizes below approximately 18px.';
+    } else if (score === 'AA Large') {
+      return 'This is the smallest acceptable amount of contrast for type sizes of 18px and larger.';
+    } else if (score === 'Fail') {
+      return 'Your text doesn\'t have enough contrast with the background.';
+    }
+    return null;
+  }
+  const getAlertType = score => {
+    if (score === 'AAA' || score === 'AA') {
+      return 'success'
+    } else if (score === 'Fail') {
+      return 'error'
+    }
+    return 'info'
+  }
+
   return (
     <Container>
       <InnerContainer>
@@ -75,7 +100,7 @@ function App() {
           <HueField>
             <BlockLabel>Background Hue</BlockLabel>
             <StyledButtonGroup selectedItem={bgHue} onSelect={setBgHue}>
-              {hues.map(hue => <Button key={hue} value={hue} isPrimary isStretched>{hue}</Button>)}
+              {hues.map(hue => <Button key={hue} value={hue} isStretched>{hue}</Button>)}
             </StyledButtonGroup>
           </HueField>
           <ShadeField>
@@ -89,7 +114,7 @@ function App() {
           <HueField>
             <BlockLabel>Foreground Hue</BlockLabel>
             <StyledButtonGroup selectedItem={fgHue} onSelect={setFgHue}>
-              {hues.map(hue => <Button key={hue} value={hue} isPrimary isStretched>{hue}</Button>)}
+              {hues.map(hue => <Button key={hue} value={hue} isStretched>{hue}</Button>)}
             </StyledButtonGroup>
           </HueField>
           <ShadeField>
@@ -122,17 +147,19 @@ function App() {
         </ComputerColorsTable>
 
         <ExampleWell foreground={fgRgba} background={bgRgba}>
-          <ExampleTitle color={fgRgba}>What is a Garden?</ExampleTitle>
+          <ExampleTitle color={fgRgba}>Example Color Output</ExampleTitle>
           <Paragraph>
-            Turnip greens yarrow endive cauliflower sea lettuce kohlrabi amaranth water. Corn amaranth
-            salsify bunya nuts nori azuki bean chickweed potato bell pepper artichoke.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis auctor metus sapien, et fermentum eros congue sit amet. Pellentesque porttitor tristique porta.
           </Paragraph>
           <Paragraph>
-            Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic. Corn
-            amaranth salsify bunya nuts nori azuki bean chickweed potato bell pepper artichoke. Turnip
-            greens yarrow endive cauliflower sea lettuce kohlrabi amaranth water.
+             Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean quis velit vel eros volutpat porttitor nec et felis. Fusce nec sagittis dolor.
           </Paragraph>
         </ExampleWell>
+
+        <Alert type={getAlertType(contrastScore)}>
+          <Paragraph>The example above has a contrast ratio of <Span isBold>{contrastRatio}</Span>, and a WCAG contrast score of <Span isBold>{contrastScore}</Span>.</Paragraph>
+          <Paragraph>{getContrastDescription(contrastScore)}</Paragraph>
+        </Alert>
       </InnerContainer>
     </Container>
   );

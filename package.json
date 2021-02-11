@@ -12,11 +12,13 @@
     "@zendeskgarden/react-notifications": "^8.32.0",
     "@zendeskgarden/react-tables": "^8.32.0",
     "@zendeskgarden/react-theming": "^8.32.0",
+    "@zendeskgarden/react-typography": "^8.32.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "4.0.2",
     "rgb2hex": "^0.2.5",
     "styled-components": "^5.2.1",
+    "wcag-color": "^1.1.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

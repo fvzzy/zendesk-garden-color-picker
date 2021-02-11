@@ -2281,6 +2281,16 @@
     "polished" "^4.0.0"
     "prop-types" "^15.5.7"
 
+"@zendeskgarden/react-typography@^8.32.0":
+  "integrity" "sha512-IJJL61FA3CKMhPJOMLKs/DWkSf5dPhr8hHAa99rFTG/67VX2GXa2R4qRnwXgRE1a37OORZXst6ItBRqpAiQy+Q=="
+  "resolved" "https://registry.npmjs.org/@zendeskgarden/react-typography/-/react-typography-8.32.0.tgz"
+  "version" "8.32.0"
+  dependencies:
+    "lodash.debounce" "^4.0.8"
+    "polished" "^4.0.0"
+    "prism-react-renderer" "^1.1.1"
+    "prop-types" "^15.5.7"
+
 "abab@^2.0.3":
   "integrity" "sha512-9IK9EadsbHo6jLWIpxpR6pL0sazTXV6+SQv25ZB+F7Bj9mJNaOc4nCRabwd5M/JwmUa8idz6Eci6eKfJryPs6Q=="
   "resolved" "https://registry.yarnpkg.com/abab/-/abab-2.0.5.tgz"
@@ -9182,6 +9192,11 @@
     "ansi-styles" "^4.0.0"
     "react-is" "^17.0.1"
 
+"prism-react-renderer@^1.1.1":
+  "integrity" "sha512-MgMhSdHuHymNRqD6KM3eGS0PNqgK9q4QF5P0yoQQvpB6jNjeSAi3jcSAz0Sua/t9fa4xDOMar9HJbLa08gl9ug=="
+  "resolved" "https://registry.npmjs.org/prism-react-renderer/-/prism-react-renderer-1.1.1.tgz"
+  "version" "1.1.1"
+
 "process-nextick-args@~2.0.0":
   "integrity" "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="
   "resolved" "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
@@ -9517,7 +9532,7 @@
   dependencies:
     "tslib" "^1.10.0"
 
-"react@*", "react@^16.14.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.4", "react@>= 16", "react@>= 16.8.0", "react@>=16.8.0":
+"react@*", "react@^16.14.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.4", "react@>= 16", "react@>= 16.8.0", "react@>=0.14.9", "react@>=16.8.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
@@ -11538,6 +11553,11 @@
   "version" "1.7.3"
   dependencies:
     "minimalistic-assert" "^1.0.0"
+
+"wcag-color@^1.1.1":
+  "integrity" "sha512-KRez+YYOx7AGoQ6+Izu3YjNsISYAC+F/g0hJ+eNaaA8taeLbEkptkgA46SM9ioXxz/2KTjJpQqAhOwAQVwaTEQ=="
+  "resolved" "https://registry.npmjs.org/wcag-color/-/wcag-color-1.1.1.tgz"
+  "version" "1.1.1"
 
 "web-vitals@^1.0.1":
   "integrity" "sha512-1cx54eRxY/+M0KNKdNpNnuXAXG+vJEvwScV4DiV9rOYDguHoeDIzm09ghBohOPtkqPO5OtPC14FWkNva3SDisg=="
