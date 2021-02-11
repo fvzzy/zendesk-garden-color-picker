@@ -61,9 +61,9 @@ function App() {
   const hues = [ 'white', 'grey', 'blue', 'red', 'yellow', 'green', 'kale', 'black' ];
 
   const [bgHue, setBgHue] = useState('white');
-  const [bgShade, setBgShade] = useState(400);
+  const [bgShade, setBgShade] = useState(500);
   const [fgHue, setFgHue] = useState('black');
-  const [fgShade, setFgShade] = useState(400);
+  const [fgShade, setFgShade] = useState(500);
 
   const bgRgba = colorRgba(bgHue, bgShade);
   const bgHex = rgb2hex(bgRgba).hex;
@@ -106,7 +106,7 @@ function App() {
           <ShadeField>
             <Label>Background Shade</Label>
             <Hint>{bgShade}</Hint>
-            <Range step={0.125} onChange={e => setBgShade(e.target.value * 8)} />
+            <Range step={0.1} onChange={e => setBgShade(e.target.value * 10)} />
           </ShadeField>
         </ColorPickerGroup>
 
@@ -120,7 +120,7 @@ function App() {
           <ShadeField>
             <Label>Foreground Shade</Label>
             <Hint>{fgShade}</Hint>
-            <Range step={0.125} onChange={e => setFgShade(e.target.value * 8)} />
+            <Range step={0.1} onChange={e => setFgShade(e.target.value * 10)} />
           </ShadeField>
         </ColorPickerGroup>
 
