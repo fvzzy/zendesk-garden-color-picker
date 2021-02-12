@@ -201,7 +201,7 @@ function App() {
           </Body>
         </ComputerColorsTable>
 
-        <ExampleWell foreground={fgRgba} background={bgRgba}>
+        <ExampleWell foreground={fgRgba} background={bgRgba} isFloating>
           <ExampleTitle color={fgRgba}>Example Color Output</ExampleTitle>
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis auctor
