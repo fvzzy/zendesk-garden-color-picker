@@ -178,7 +178,8 @@ function App() {
         <ComputerColorsTable>
           <Head>
             <HeaderRow>
-              <HeaderCell>Computed Colors</HeaderCell>
+              <HeaderCell></HeaderCell>
+              <HeaderCell>Color</HeaderCell>
               <HeaderCell>RGBa</HeaderCell>
               <HeaderCell>HEX</HeaderCell>
             </HeaderRow>
@@ -186,11 +187,17 @@ function App() {
           <Body>
             <Row>
               <Cell>Background</Cell>
+              <Cell>
+                {bgHue} {bgShade}
+              </Cell>
               <Cell>{bgRgba}</Cell>
               <Cell>{bgHex}</Cell>
             </Row>
             <Row>
               <Cell>Foreground</Cell>
+              <Cell>
+                {fgHue} {fgShade}
+              </Cell>
               <Cell>{fgRgba}</Cell>
               <Cell>{fgHex}</Cell>
             </Row>
