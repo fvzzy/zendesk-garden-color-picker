@@ -74,7 +74,9 @@ const ColouredButton = styled(Button)`
   border-color: ${props => getColor(props.value, 600, DEFAULT_THEME, 1)};
 
   &:hover,
-  &:active {
+  &:active,
+  &[aria-pressed="true"],
+  &[aria-pressed="mixed"] {
     color: ${props => getColor(props.value, 300, DEFAULT_THEME, 1)};
     background-color: ${props => getColor(props.value, 600, DEFAULT_THEME, 1)};
     border-color: ${props => getColor(props.value, 800, DEFAULT_THEME, 1)};
