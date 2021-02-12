@@ -81,8 +81,11 @@ const ColouredButton = styled(Button)`
 `
 
 function App() {
-  const colorRgba = (hue, shade) => getColor(hue, shade, DEFAULT_THEME, 1)
   const hues = ["grey", "blue", "red", "yellow", "green", "kale"]
+
+  const colorRgba = (hue, shade) => getColor(hue, shade, DEFAULT_THEME, 1)
+  const capitalise = word =>
+    word.replace(/\b\w/g, letter => letter.toUpperCase())
 
   const [bgHue, setBgHue] = useState("white")
   const [bgShade, setBgShade] = useState(500)
@@ -96,6 +99,7 @@ function App() {
 
   const contrastRatio = ratio(fgHex, bgHex)
   const contrastScore = score(fgHex, bgHex)
+
   const getContrastDescription = score => {
     if (score === "AAA") {
       return "This is enhanced contrast, suitable for longer articles that will be read for a significant period of time."
@@ -108,6 +112,7 @@ function App() {
     }
     return null
   }
+
   const getAlertType = score => {
     if (score === "AAA" || score === "AA") {
       return "success"
@@ -126,7 +131,7 @@ function App() {
             <StyledButtonGroup selectedItem={bgHue} onSelect={setBgHue}>
               {hues.map(hue => (
                 <ColouredButton key={hue} value={hue} isStretched>
-                  {hue}
+                  {capitalise(hue)}
                 </ColouredButton>
               ))}
             </StyledButtonGroup>
@@ -152,7 +157,7 @@ function App() {
             <StyledButtonGroup selectedItem={fgHue} onSelect={setFgHue}>
               {hues.map(hue => (
                 <ColouredButton key={hue} value={hue} isStretched>
-                  {hue}
+                  {capitalise(hue)}
                 </ColouredButton>
               ))}
             </StyledButtonGroup>
@@ -185,7 +190,7 @@ function App() {
             <Row>
               <Cell>Background</Cell>
               <Cell>
-                {bgHue} {bgShade}
+                {capitalise(bgHue)} {bgShade}
               </Cell>
               <Cell>{bgRgba}</Cell>
               <Cell>{bgHex}</Cell>
@@ -193,7 +198,7 @@ function App() {
             <Row>
               <Cell>Foreground</Cell>
               <Cell>
-                {fgHue} {fgShade}
+                {capitalise(fgHue)} {fgShade}
               </Cell>
               <Cell>{fgRgba}</Cell>
               <Cell>{fgHex}</Cell>
