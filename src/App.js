@@ -56,9 +56,21 @@ const ExampleTitle = styled(WellTitle)`
   color: ${props => props.color};
 `
 
+const ColouredButton = styled(Button)`
+  color: ${props => getColor(props.value, 800, DEFAULT_THEME, 1)};
+  background-color: ${props => getColor(props.value, 400, DEFAULT_THEME, 1)};
+  border-color: ${props => getColor(props.value, 600, DEFAULT_THEME, 1)};
+
+ &:hover, &:active {
+    color: ${props => getColor(props.value, 300, DEFAULT_THEME, 1)};
+    background-color: ${props => getColor(props.value, 600, DEFAULT_THEME, 1)};
+    border-color: ${props => getColor(props.value, 800, DEFAULT_THEME, 1)};
+  }
+`
+
 function App() {
   const colorRgba = (hue, shade) => getColor(hue, shade, DEFAULT_THEME, 1);
-  const hues = [ 'white', 'grey', 'blue', 'red', 'yellow', 'green', 'kale', 'black' ];
+  const hues = [ 'grey', 'blue', 'red', 'yellow', 'green', 'kale' ];
 
   const [bgHue, setBgHue] = useState('white');
   const [bgShade, setBgShade] = useState(500);
@@ -100,7 +112,7 @@ function App() {
           <HueField>
             <BlockLabel>Background Hue</BlockLabel>
             <StyledButtonGroup selectedItem={bgHue} onSelect={setBgHue}>
-              {hues.map(hue => <Button key={hue} value={hue} isStretched>{hue}</Button>)}
+              {hues.map(hue => <ColouredButton key={hue} value={hue} isStretched>{hue}</ColouredButton>)}
             </StyledButtonGroup>
           </HueField>
           <ShadeField>
@@ -114,7 +126,7 @@ function App() {
           <HueField>
             <BlockLabel>Foreground Hue</BlockLabel>
             <StyledButtonGroup selectedItem={fgHue} onSelect={setFgHue}>
-              {hues.map(hue => <Button key={hue} value={hue} isStretched>{hue}</Button>)}
+              {hues.map(hue => <ColouredButton key={hue} value={hue} isStretched>{hue}</ColouredButton>)}
             </StyledButtonGroup>
           </HueField>
           <ShadeField>
