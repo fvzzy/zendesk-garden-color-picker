@@ -29,19 +29,16 @@ const Container = styled.div`
 
 const InnerContainer = styled.div`
   max-width: 700px;
-  padding: ${props => props.theme.space.xl};
-  border: ${props => `${props.theme.borders.sm} ${PALETTE.grey[200]}`};
 `
 
 const ColorPickerGroup = styled.div`
   margin-bottom: ${props => props.theme.space.lg};
+  padding: ${props => props.theme.space.lg};
+  border: ${props => `${props.theme.borders.sm} ${PALETTE.grey[200]}`};
+  border-radius: ${props => `${props.theme.borderRadii.md}`};
 `
 
 const HueField = styled.div`
-  margin-bottom: ${props => props.theme.space.md};
-`
-
-const ShadeField = styled(Field)`
   margin-bottom: ${props => props.theme.space.md};
 `
 
@@ -134,7 +131,7 @@ function App() {
               ))}
             </StyledButtonGroup>
           </HueField>
-          <ShadeField>
+          <Field>
             <Label>Background Shade</Label>
             <Input
               type="number"
@@ -146,7 +143,7 @@ function App() {
               value={bgShade / 10}
               onChange={e => setBgShade(e.target.value * 10)}
             />
-          </ShadeField>
+          </Field>
         </ColorPickerGroup>
 
         <ColorPickerGroup>
@@ -160,7 +157,7 @@ function App() {
               ))}
             </StyledButtonGroup>
           </HueField>
-          <ShadeField>
+          <Field>
             <Label>Foreground Shade</Label>
             <Input
               type="number"
@@ -172,7 +169,7 @@ function App() {
               value={fgShade / 10}
               onChange={e => setFgShade(e.target.value * 10)}
             />
-          </ShadeField>
+          </Field>
         </ColorPickerGroup>
 
         <ComputerColorsTable>
